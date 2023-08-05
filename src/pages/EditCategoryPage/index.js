@@ -20,7 +20,7 @@ const EditCategoryPage = props => {
         e.preventDefault();
         setSubmitting(true);
 
-        const { categories, errorMessage } = await updateCategory(userId, category._id, updatedName);
+        const { categories, errorMessage } = await updateCategory(userId, categoryId, updatedName);
         if(errorMessage) {
             setErrorMessage(errorMessage);
             setSubmitting(false);

@@ -1,0 +1,10 @@
+.flashcard-status {
+    /* border: 1px solid var(--black); */
+    bottom: 1rem;
+    position: absolute;
+    right: 1rem;
+}
+
+/* .flashcard-status-italic {
+    font-style: italic;
+} */

@@ -1,0 +1,23 @@
+.category-page-header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 1rem 0;
+}
+
+.category-page-header-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 700px) {
+    .category-page-header {
+        align-items: center;
+    }
+
+    .category-page-header-buttons {
+        align-items: center;
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,14 @@
+.delete-modal {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: auto auto;
+    text-align: center;
+}
+
+.delete-modal-buttons {
+    justify-self: center;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: auto auto;
+    width: fit-content;
+}

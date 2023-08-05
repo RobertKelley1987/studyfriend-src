@@ -1,0 +1,28 @@
+.category {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.category:hover {
+    background-color: var(--flair);
+    box-shadow: -.5rem .5rem 0 0 var(--black);
+}
+
+.category-data > * {
+    display: block;
+}
+
+.category-name {
+    font-size: var(--medium-font);
+    margin: 0 0 .5rem 0;
+    word-break: break-word;
+}
+
+.category-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

@@ -1,0 +1,9 @@
+.return-link::after {
+    content: "Back";
+}
+
+@media(min-width: 500px) {
+    .return-link::after {
+        content: "Return to Category Page";
+    }
+}

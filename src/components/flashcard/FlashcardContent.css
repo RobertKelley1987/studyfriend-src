@@ -1,0 +1,18 @@
+.flashcard-content {
+    margin: 0 0 1rem 0;
+    white-space: pre-wrap;
+}
+
+.flashcard-content-big {
+    margin: 0 0 2rem 0;
+}
+
+.flashcard-content-title {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.flashcard-content-big,
+.flashcard-content-big .flashcard-content-title {
+    font-size: var(--huge-font);
+}

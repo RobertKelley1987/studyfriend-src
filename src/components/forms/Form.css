@@ -1,0 +1,42 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form > * {
+    display: block;
+    margin: 1rem 0 0 0;
+}
+
+.form-heading {
+    font-size: var(--medium-font);
+    white-space: nowrap;
+}
+
+.form-input,
+.form-textarea,
+.form-select,
+.form-submit {
+    background: white;
+    border: 1px solid var(--black);
+    font-family: 'Roboto', sans-serif;
+    font-size: var(--small-font);
+    padding: .5rem;
+}
+
+.form-wrapper {
+    flex-direction: column;
+    max-width: 300px;
+    width: 100%;    
+}
+
+.form-textarea {
+    min-height: 5rem;
+}
+
+.form-hint {
+    color: red;
+    font-size: var(--x-small-font);
+    padding: 0 0 1rem 0;
+}
+

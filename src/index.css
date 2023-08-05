@@ -1,0 +1,130 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* GLOBAL */
+:root {
+  --black: rgb(41, 41, 41);
+  --sans-serif: 'Roboto', sans-serif;
+  --x-small-font: 1rem;
+  --small-font: 1.15rem;
+  --medium-font: 1.75rem;
+  --huge-font: 2.5rem;
+}
+
+@media (min-width: 500px) {
+  :root {
+    --huge-font: 3rem;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+html {
+  color: var(--black);
+  font-family: var(--sans-serif);
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+h2, h3, p {
+  margin: 0;
+}
+
+p, span, button, a, input, textarea {
+  font-size: var(--small-font);
+}
+
+svg {
+  color: var(--black);
+}
+
+/* UTILITY */
+.button {
+  align-items: center;
+  background: white;
+  border: 1px solid var(--black);
+  color: var(--black);
+  display: inline-flex;
+  font-family: var(--sans-serif);
+  font-size: var(--small-font);
+  justify-content: center;
+  padding: .5rem;
+  width: fit-content;
+}
+
+.button svg {
+  height: 1rem;
+  padding: 0 .25rem 0 0;
+  width: 1rem;
+}
+
+.button:hover {
+  background-color: var(--black);
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover svg {
+  color: white;
+}
+
+.button:disabled {
+  background-color: white;
+  color: var(--black);
+  opacity: 70%;
+}
+
+.button:hover:disabled {
+  background-color: white;
+  color: var(--black);
+  cursor: auto;
+}
+
+.link {
+  background-color: white;
+  border: none;
+  color: var(--black);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.page {
+  display: flex;
+  flex: 1 0 100%;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.center-content {
+  align-items: center;
+  display: flex;
+  flex: 1 0 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.back-link-svg {
+  height: 1.3rem;
+}
+
+.loading {
+  transform: translateY(-50px);
+}

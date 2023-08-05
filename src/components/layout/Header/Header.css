@@ -1,0 +1,14 @@
+.app-logo {
+    display: block;
+    font-family: var(--sans-serif);
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+

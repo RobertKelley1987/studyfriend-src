@@ -17,7 +17,7 @@ const LogoutButton = ({ setErrorMessage, setUserId, setCategories }) => {
             navigate('/login');
         } catch (e) {
             setSubmitting(false);
-            e && setErrorMessage("Failed to logout. Please try again.")
+            setErrorMessage("Failed to logout. Please try again.")
         }
     }
 

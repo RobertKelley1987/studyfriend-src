@@ -2,13 +2,13 @@ import { Link, useParams } from 'react-router-dom';
 import ResetButton from './ResetButton';
 import StudyButton from './StudyButton';
 import CategoryOptions from '../../components/category/CategoryOptions';
+import Dropdown from '../../components/ui/Dropdown';
 import PlusSVG from '../../components/SVGs/PlusSVG';
 import './CategoryPageHeader.css';
-import Dropdown from '../../components/ui/Dropdown';
 
 // Options displayed at top of category page
 const CategoryPageHeader = props => {
-    const { setCategories, completed } = props;
+    const { setFlashcards, completed } = props;
     const { categoryId = '' } = useParams();
     
     return (
@@ -19,7 +19,7 @@ const CategoryPageHeader = props => {
                     New Flashcard
                 </Link>
                 <StudyButton {...props} categoryId={categoryId} className="button" />
-                <ResetButton className="button" completed={completed} setCategories={setCategories} />
+                <ResetButton className="button" completed={completed} setFlashcards={setFlashcards} />
             </div>
             <Dropdown svgClassName={"dropdown-svg-big"}>            
                 <CategoryOptions categoryId={categoryId} className="link" />

@@ -9,8 +9,12 @@ const DeleteCategoryButton = ({ setCategories, dismissModal }) => {
     const { categoryId } = useParams();
 
     const handleClick = async () => {
-        const { data: { categories} } = await deleteCategory(userId, categoryId);
-        setCategories(categories);
+        const { data: { categories } } = await deleteCategory(userId, categoryId);
+        if(errorMessage) {
+            setErrorMessage(errorMessage);
+        } else {
+            setCategories(categories);
+        }
         dismissModal();
     }
 

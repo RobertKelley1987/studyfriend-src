@@ -4,7 +4,7 @@ import { UserIdContext } from '../../context/UserIdContext';
 import { updateFlashcardCompleted } from '../../services/flashcards';
 
 // Button used to mark a flashcard as completed in database
-const CompletedButton = ({ className, setCategories, flashcard = { completed: false }, redirectLink }) => {
+const CompletedButton = ({ className, setFlashcards, flashcard = { completed: false }, redirectLink }) => {
     const userId = useContext(UserIdContext);
     const { categoryId } = useParams();
     const navigate = useNavigate();
@@ -13,9 +13,11 @@ const CompletedButton = ({ className, setCategories, flashcard = { completed: fa
 
     const handleClick = async e => {
         e.preventDefault();
-        const { data: { categories } } = await updateFlashcardCompleted(userId, categoryId, flashcard._id);
-        setCategories(categories);
-        redirectLink && navigate(redirectLink);
+        const { data: { category } } = await updateFlashcardCompleted(userId, categoryId, flashcard._id);
+        setFlashcards(category.flashcards);
+        if(redirectLink) {
+            navigate(redirectLink);
+        }
     }
 
     return <button className={className} onClick={handleClick}>{renderText()}</button>;

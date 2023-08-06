@@ -12,7 +12,7 @@ const LoginPage = ({ setUserId }) => {
     return (
         <div className="page login-page">
             <ErrorMessage message={errorMessage}/>
-            <main className="center-content login-page-wrapper">
+            <main className="login-page-wrapper">
                 <AuthForm 
                     title="Log In" 
                     authFn={logInUser} 

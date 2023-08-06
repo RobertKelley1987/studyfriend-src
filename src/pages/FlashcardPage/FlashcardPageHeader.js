@@ -8,7 +8,7 @@ import './FlashcardPageHeader.css';
 const FlashcardPageHeader = props => {
     const { isStudying, setIsStudying, categories, category } = props;
 
-    const cardsRemaining = <CardsRemaining isStudying={isStudying} category={category} />;
+    const cardsRemaining = <CardsRemaining category={category} />;
     const options = (
         <Dropdown categories={categories} svgClassName={"dropdown-svg-big"}>
             <FlashcardOptions {...props} categoryId={category._id} className="link" />

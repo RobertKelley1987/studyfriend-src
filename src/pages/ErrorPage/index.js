@@ -1,5 +1,6 @@
 import './ErrorPage.css';
 
+// Page to display in case of server disconnection or unrecoverable error
 const ErrorPage = () => {
     return (
         <div className="error-page center-content">

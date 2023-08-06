@@ -6,6 +6,7 @@ import { findCategory, findFlashcard } from '../../utils';
 import FlashcardForm from '../../components/forms/FlashcardForm';
 import ErrorMessage from '../../components/ui/ErrorMessage'
 
+// Displays form to edit flashcard
 const EditFlashcardPage = props => {
     const userId = useContext(UserIdContext);
     const { categories, setCategories } = props;

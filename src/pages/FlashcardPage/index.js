@@ -8,6 +8,7 @@ import ReviewFlashcardButtons from './ReviewFlashcardButtons';
 import FlashcardStatus from './FlashcardStatus';
 import './FlashcardPage.css';
 
+// Flashcard show page, also used to show flascards in study mode 
 const FlashcardPage = props => {
     const { categories, isStudying } = props;
     const [isFlipped, setIsFlipped] = useIsFlipped();

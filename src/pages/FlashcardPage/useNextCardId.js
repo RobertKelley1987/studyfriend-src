@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+// Finds the id of the next flashcard in a category based on card
+// the card currently displayed
 const useNextCardId = category => {
     const [nextCardId, setNextCardId] = useState('');
-    const { flashcardId } = useParams();
+    const { flashcardId } = useParams(); // ID of flashcard currently shown to user
 
     useEffect(() => {
         if(category) {

@@ -1,5 +1,6 @@
 import './FlashcardStatus.css';
 
+// Displays whether card was mark completed by user on the flashcard show page
 const FlashcardStatus = ({ flashcard }) => {
     const status = flashcard.completed ? "Completed" : "Not Completed";
     return (

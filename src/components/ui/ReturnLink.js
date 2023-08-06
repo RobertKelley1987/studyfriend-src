@@ -7,7 +7,7 @@ const ReturnLink = ({ setIsStudying }) => {
 
     return (
         <Link data-text="Return To Category Page" className="return-link button" to={`/categories/${categoryId}`} onClick={() => setIsStudying(false)}>
-            <BackArrowSVG className="back-link-svg"/>
+            <BackArrowSVG />
         </Link>
     )
 }

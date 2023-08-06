@@ -3,6 +3,7 @@ import { findCategory } from '../../utils';
 import DeleteModal from '../../components/ui/DeleteModal';
 import DeleteCategoryButton from './DeleteCategoryButton';
 
+// Displays modal confirming category deletion
 const DeleteCategoryPage = ({ categories, setCategories }) => {
     const { categoryId } = useParams();
     const category = findCategory(categories, categoryId);

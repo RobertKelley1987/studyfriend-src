@@ -1,6 +1,7 @@
 import Grid from '../../components/layout/Grid';
 import Category from './Category';
 
+// Grid of categories displayed on categories page
 const Categories = ({ categories }) => {
     const emptyMessage = (
         <p className="categories-empty-message">

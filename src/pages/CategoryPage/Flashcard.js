@@ -6,6 +6,7 @@ import FlipCardButton from '../../components/flashcard/FlipCardButton';
 import Dropdown from '../../components/ui/Dropdown';
 import './Flashcard.css';
 
+// Flashcard element displayed in grid on category page
 const Flashcard = props => {
     const [isFlipped, setIsFlipped] = useState(false);
     const { flashcard, categoryId } = props;

@@ -5,6 +5,7 @@ import { createFlashcard } from '../../services/flashcards';
 import FlashcardForm from '../../components/forms/FlashcardForm';
 import ErrorMessage from '../../components/ui/ErrorMessage'
 
+// Page with form to make new flashcard
 const NewFlashcardPage = props => {
     const { setCategories } = props;
     const { categoryId } = useParams();

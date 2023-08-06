@@ -3,6 +3,7 @@ import Dropdown from '../../components/ui/Dropdown';
 import CategoryOptions from '../../components/category/CategoryOptions';
 import './Category.css';
 
+// Category card displayed inside grid of categories on categories page
 const Category = ({ category }) => {
     // Flashcards user wants to review
     const cardsToReview = category.flashcards.filter(flashcard => !flashcard.completed);

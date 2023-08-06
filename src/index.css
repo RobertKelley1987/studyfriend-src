@@ -44,7 +44,7 @@ svg {
   color: var(--black);
 }
 
-/* UTILITY */
+/* UTILITY CLASSES */
 .button {
   align-items: center;
   background: white;
@@ -53,15 +53,14 @@ svg {
   display: inline-flex;
   font-family: var(--sans-serif);
   font-size: var(--small-font);
+  gap: .25rem;
   justify-content: center;
   padding: .5rem;
   width: fit-content;
 }
 
 .button svg {
-  height: 1rem;
-  padding: 0 .25rem 0 0;
-  width: 1rem;
+  width: 1.5rem;
 }
 
 .button:hover {
@@ -84,6 +83,10 @@ svg {
   background-color: white;
   color: var(--black);
   cursor: auto;
+}
+
+.button svg {
+  height: 1.3rem;
 }
 
 .link {
@@ -110,7 +113,6 @@ svg {
 }
 
 .center-content {
-  align-items: center;
   display: flex;
   flex: 1 0 100%;
   flex-direction: column;
@@ -119,10 +121,6 @@ svg {
 
 .bold {
   font-weight: bold;
-}
-
-.back-link-svg {
-  height: 1.3rem;
 }
 
 .loading {

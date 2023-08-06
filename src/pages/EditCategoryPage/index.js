@@ -7,6 +7,7 @@ import CategoryForm from '../../components/forms/CategoryForm';
 import Loading from '../../components/ui/Loading';
 import ErrorMessage from '../../components/ui/ErrorMessage';
 
+// Displays form to edit category
 const EditCategoryPage = props => {
     const userId = useContext(UserIdContext);
     const { categoryId } = useParams();

@@ -5,6 +5,7 @@ import CategoryPageHeader from './CategoryPageHeader';
 import Loading from '../../components/ui/Loading';
 import './CategoryPage.css';
 
+// Category page displaying name and all flashcards for that category
 const CategoryPage = props => {
     const { categories, setIsStudying } = props;
     const { categoryId } = useParams();

@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { logInUser } from "../../services/users";
 import AuthForm from '../../components/forms/AuthForm';
 import ErrorMessage from '../../components/ui/ErrorMessage';
+import DemoUserButton from './DemoUserButton';
+import './LoginPage.css';
 
+// User login page
 const LoginPage = ({ setUserId }) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     return (
-        <div className="page">
+        <div className="page login-page">
             <ErrorMessage message={errorMessage}/>
-            <div className="center-content">
+            <main className="center-content login-page-wrapper">
                 <AuthForm 
                     title="Log In" 
                     authFn={logInUser} 
@@ -17,7 +20,9 @@ const LoginPage = ({ setUserId }) => {
                     setUserId={setUserId} 
                     includeHints={false}
                 />
-            </div>
+                <p>Or</p>
+                <DemoUserButton setErrorMessage={setErrorMessage} setUserId={setUserId} />
+            </main>
         </div>
     );
 }

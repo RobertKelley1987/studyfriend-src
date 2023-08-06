@@ -4,6 +4,7 @@ import FlashcardOptions from '../../components/flashcard/FlashcardOptions';
 import ReturnLink from '../../components/ui/ReturnLink';
 import './FlashcardPageHeader.css';
 
+// Header options for the flashcard show page
 const FlashcardPageHeader = props => {
     const { isStudying, setIsStudying, categories, category } = props;
 

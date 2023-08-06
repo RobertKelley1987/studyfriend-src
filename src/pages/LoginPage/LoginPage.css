@@ -1,0 +1,10 @@
+.login-page {
+    align-items: center;
+}
+
+.login-page-wrapper {
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 300px;
+    width: 100%;
+}

@@ -5,6 +5,7 @@ import { createCategory } from '../../services/categories';
 import CategoryForm from '../../components/forms/CategoryForm';
 import ErrorMessage from '../../components/ui/ErrorMessage';
 
+// Page with form to create new category
 const NewCategoryPage = props => {
     const userId = useContext(UserIdContext);
     const { setCategories } = props;

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+// Enters study mode for a category
 const StudyButton = ({ className, firstCard, setIsStudying, categoryId }) => {
     const navigate = useNavigate();
 

@@ -1,6 +1,7 @@
 import ReturnLink from '../../components/ui/ReturnLink';
 import './CompletedPage.css';
 
+// Page displayed to user when all flashcards in a category are marked completed
 const CompletedPage = ({ setIsStudying }) => {
     return (
         <div className="page completed-page">

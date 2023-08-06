@@ -1,6 +1,7 @@
 import Flashcard from './Flashcard';
 import Grid from '../../components/layout/Grid';
 
+// Flashcard grid displayed on category page
 const Flashcards = props => {
     const { flashcards } = props;
 

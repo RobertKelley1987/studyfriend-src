@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-/* Takes the user to the next flashcard without marking the previous
-   card as completed. If the button is rendered on the only card remaining,
-   it redirects back to the question side for the same card. */
+// Takes the user to the next flashcard without marking the previous
+// card as completed. If the button is rendered on the only card remaining,
+// it redirects back to the question side for the same card. 
 const ContinueButton = ({ nextLink, nextCardId, className, setIsFlipped }) => {
     const navigate = useNavigate();
 

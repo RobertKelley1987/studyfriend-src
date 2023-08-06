@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+// Dropdown options displayed for a category, either on show page or in grid card
 const CategoryOptions = ({ categoryId, className }) => {
     const location = useLocation();
     

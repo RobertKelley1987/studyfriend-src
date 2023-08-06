@@ -3,6 +3,7 @@ import { signUpUser } from "../../services/users";
 import AuthForm from "../../components/forms/AuthForm";
 import ErrorMessage from '../../components/ui/ErrorMessage';
 
+// User signup page
 const SignupPage = ({ setUserId }) => {
     const [errorMessage, setErrorMessage] = useState('');
 

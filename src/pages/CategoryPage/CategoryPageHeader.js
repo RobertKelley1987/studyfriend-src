@@ -6,6 +6,7 @@ import PlusSVG from '../../components/SVGs/PlusSVG';
 import './CategoryPageHeader.css';
 import Dropdown from '../../components/ui/Dropdown';
 
+// Options displayed at top of category page
 const CategoryPageHeader = props => {
     const { setCategories, completed } = props;
     const { categoryId = '' } = useParams();

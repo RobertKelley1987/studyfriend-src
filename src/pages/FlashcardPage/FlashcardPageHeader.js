@@ -17,7 +17,11 @@ const FlashcardPageHeader = props => {
 
     return (
         <div className="flashcard-page-header">
-            <ReturnLink className="button" setIsStudying={setIsStudying} />
+            <ReturnLink 
+                setIsStudying={setIsStudying} 
+                text="Return to category page" 
+                link={`/categories/${category._id}`} 
+            />
             {isStudying ? cardsRemaining : options}
         </div>
     )

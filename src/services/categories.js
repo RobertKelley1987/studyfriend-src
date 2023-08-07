@@ -16,7 +16,7 @@ export const createCategory = async (userId, name) => {
 }
 
 export const deleteCategory = async (userId, categoryId) => {
-    const { data } = api.delete(`${categoryURL(userId)}/${categoryId}`);
+    const { data } = await api.delete(`${categoryURL(userId)}/${categoryId}`);
     return data;
 }
 

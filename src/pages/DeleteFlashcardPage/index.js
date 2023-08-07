@@ -3,13 +3,14 @@ import DeleteModal from '../../components/ui/DeleteModal';
 import DeleteFlashcardButton from './DeleteFlashcardButton';
 
 // Displays modal confirming flashcard deletion
-const DeleteFlashcardPage = ({ setCategories }) => {
+const DeleteFlashcardPage = ({ setErrorMessage, setFlashcards }) => {
     const navigate = useNavigate();
     const { categoryId } = useParams();
     
     return <DeleteModal>
                <DeleteFlashcardButton 
-                    setCategories={setCategories} 
+                    setErrorMessage={setErrorMessage}
+                    setFlashcards={setFlashcards} 
                     dismissModal={() => navigate(`/categories/${categoryId}`)} 
                />
            </DeleteModal>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import useCategories from './hooks/useCategories';
+import useCategory from './hooks/useCategory';
 import useUserId from './hooks/useUserId';
 import CategoriesPage from './pages/CategoriesPage';
 import NewCategoryPage from './pages/NewCategoryPage';
@@ -18,16 +19,17 @@ import Header from './components/layout/Header';
 import ProtectedRoute from './components/ui/ProtectedRoute';
 import Loading from './components/ui/Loading';
 import { UserIdContext } from './context/UserIdContext';
-import './App.css';
 import ErrorMessage from './components/ui/ErrorMessage';
+import './App.css';
 
 function App() {
-  const [userId, setUserId, loadingUserId] = useUserId();
-  const [isStudying, setIsStudying] = useState(false);
-  const [categories, setCategories, categoriesLoading] = useCategories(userId);
-  const [category, setFlashcards] = useCategory(userId);
-  const gettingSessionData = loadingUserId || userId === undefined;
   const [errorMessage, setErrorMessage] = useState('');
+  const [isStudying, setIsStudying] = useState(false);
+  const [categoryId, setCategoryId] = useState('');
+  const [userId, setUserId, loadingUserId] = useUserId();
+  const [categories, setCategories, categoriesLoading] = useCategories(userId);
+  const { category, setFlashcards } = useCategory(userId, categoryId);
+  const gettingSessionData = loadingUserId || userId === undefined;
 
   // Location state for modal routes
   const location = useLocation();
@@ -42,7 +44,7 @@ function App() {
           setUserId={setUserId} 
           setCategories={setCategories} 
         />
-        {errorMessage && <ErrorMessage message={errorMessage}/>}
+        {errorMessage && <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>}
         <Routes location={background || location}>
           <Route 
             exact path="/"
@@ -75,7 +77,11 @@ function App() {
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
-                  <CategoriesPage categories={categories} categoriesLoading={categoriesLoading} />
+                  <CategoriesPage 
+                    setCategoryId={setCategoryId} 
+                    categories={categories} 
+                    categoriesLoading={categoriesLoading} 
+                  />
                 </ProtectedRoute>
               </Loading>
             }
@@ -85,7 +91,7 @@ function App() {
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
-                  <NewCategoryPage setCategories={setCategories} />
+                  <NewCategoryPage setCategories={setCategories} setIsStudying={setIsStudying} />
                 </ProtectedRoute>
               </Loading>
             } 
@@ -97,9 +103,10 @@ function App() {
                 <ProtectedRoute userId={userId}>
                     <CategoryPage 
                       category={category}
-                      setFlashcards={setFlashcards}
+                      setCategoryId={setCategoryId}
                       userId={userId} 
-                      setIsStudying={setIsStudying} 
+                      setIsStudying={setIsStudying}
+                      setFlashcards={setFlashcards} 
                     />
                 </ProtectedRoute>
               </Loading>
@@ -111,7 +118,11 @@ function App() {
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
                   <Loading isLoading={categoriesLoading} loadingEl="Loading...">
-                    <EditCategoryPage categories={categories} setCategories={setCategories} />
+                    <EditCategoryPage 
+                      categories={categories} 
+                      setCategories={setCategories}
+                      setIsStudying={setIsStudying}  
+                    />
                   </Loading>
                 </ProtectedRoute>
               </Loading>
@@ -132,7 +143,11 @@ function App() {
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
-                  <NewFlashcardPage categories={categories} setCategories={setCategories} />
+                  <NewFlashcardPage 
+                    categories={categories} 
+                    setFlashcards={setFlashcards} 
+                    setIsStudying={setIsStudying} 
+                  />
                 </ProtectedRoute>
               </Loading>
             } 
@@ -159,9 +174,11 @@ function App() {
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
-                  <Loading isLoading={categoriesLoading} loadingEl="Loading...">
-                    <EditFlashcardPage categories={categories} setCategories={setCategories} />
-                  </Loading>
+                  <EditFlashcardPage                     
+                    setIsStudying={setIsStudying} 
+                    categories={categories} 
+                    setFlashcards={setFlashcards} 
+                  />
                 </ProtectedRoute>
               </Loading>
             } 
@@ -198,7 +215,7 @@ function App() {
                   <ProtectedRoute userId={userId}>
                     <DeleteCategoryPage 
                       setErrorMessage={setErrorMessage} 
-                      categories={categories} 
+                      category={category} 
                       setCategories={setCategories} 
                     />
                   </ProtectedRoute>

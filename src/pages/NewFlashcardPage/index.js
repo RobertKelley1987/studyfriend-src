@@ -4,10 +4,11 @@ import { UserIdContext } from '../../context/UserIdContext';
 import { createFlashcard } from '../../services/flashcards';
 import FlashcardForm from '../../components/forms/FlashcardForm';
 import ErrorMessage from '../../components/ui/ErrorMessage'
+import ReturnLink from '../../components/ui/ReturnLink';
 
 // Page with form to make new flashcard
 const NewFlashcardPage = props => {
-    const { setCategories } = props;
+    const { setFlashcards, setIsStudying } = props;
     const { categoryId } = useParams();
     const [submitting, setSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -18,12 +19,12 @@ const NewFlashcardPage = props => {
         e.preventDefault();
         setSubmitting(true);
 
-        const { categories, errorMessage } = await createFlashcard(userId, categoryId, flashcard);
+        const { category, errorMessage } = await createFlashcard(userId, categoryId, flashcard);
         if(errorMessage) {
             setErrorMessage(errorMessage);
             setSubmitting(false);
         } else {
-            setCategories(categories);
+            setFlashcards(category.flashcards);
             navigate(`/categories/${categoryId}`);
         }
     }
@@ -31,6 +32,11 @@ const NewFlashcardPage = props => {
     return (
         <div className="page">
             <ErrorMessage message={errorMessage} />
+            <ReturnLink 
+                setIsStudying={setIsStudying} 
+                text="Return to category page" 
+                link={`/categories/${categoryId}`}
+            />
             <div className="center-content">
                 <FlashcardForm 
                     {...props} 

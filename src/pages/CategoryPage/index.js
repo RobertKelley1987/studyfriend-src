@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom'; 
 import Flashcards from './Flashcards';
 import CategoryPageHeader from './CategoryPageHeader';
 import Loading from '../../components/ui/Loading';
@@ -5,8 +7,13 @@ import './CategoryPage.css';
 
 // Category page displaying name and all flashcards for that category
 const CategoryPage = props => {
-    const { category } = props;
+    const { categoryId } = useParams();
+    const { category, setCategoryId } = props;
     const { name, flashcards } = category;
+
+    useEffect(() => {
+        setCategoryId(categoryId)
+    }, [categoryId, setCategoryId])
 
     return (
         <Loading isLoading={!name} loadingEl={<div className="loading center-content">Loading...</div>}>

@@ -4,11 +4,12 @@ import { UserIdContext } from '../../context/UserIdContext';
 import { createCategory } from '../../services/categories';
 import CategoryForm from '../../components/forms/CategoryForm';
 import ErrorMessage from '../../components/ui/ErrorMessage';
+import ReturnLink from '../../components/ui/ReturnLink';
 
 // Page with form to create new category
 const NewCategoryPage = props => {
     const userId = useContext(UserIdContext);
-    const { setCategories } = props;
+    const { setCategories, setIsStudying } = props;
     const [submitting, setSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
@@ -31,6 +32,7 @@ const NewCategoryPage = props => {
     return (
         <div className="page">
             <ErrorMessage message={errorMessage} />
+            <ReturnLink setIsStudying={setIsStudying} text="Return to categories page" link={`/categories`} />
             <div className="center-content">
                 <CategoryForm 
                     handleSubmit={handleSubmit} 

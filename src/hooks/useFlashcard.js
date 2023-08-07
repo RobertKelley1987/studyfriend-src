@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getFlashcard } from '../../services/flashcards';
+import { getFlashcard } from '../services/flashcards';
 
 const useFlashcard = userId => {
     const [question, setQuestion] = useState('');

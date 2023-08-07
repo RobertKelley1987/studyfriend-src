@@ -4,6 +4,6 @@
 
 @media(min-width: 500px) {
     .return-link::after {
-        content: "Return to Category Page";
+        content: attr(data-text);
     }
 }

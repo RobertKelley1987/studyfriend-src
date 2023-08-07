@@ -1,5 +1,16 @@
 .error-message {
+    align-items: center;
     background-color: rgb(255, 195, 195);
     color: red;
+    display: flex;
+    justify-content: space-between;
     padding: 1rem;
+}
+
+.error-message svg {
+    color: red;
+}
+
+.error-message svg:hover {
+    cursor: pointer;
 }

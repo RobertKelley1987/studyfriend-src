@@ -1,17 +1,11 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BackArrowSVG from '../SVGs/BackArrowSVG';
 import './ReturnLink.css';
 
 // Returns user to category page
-const ReturnLink = ({ setIsStudying }) => {
-    const { categoryId } = useParams();
-
+const ReturnLink = ({ setIsStudying, text, link }) => {
     return (
-        <Link 
-            className="return-link button" 
-            to={`/categories/${categoryId}`} 
-            onClick={() => setIsStudying(false)}
-        >
+        <Link className="return-link button" to={link} onClick={() => setIsStudying(false)} data-text={text}>
             <BackArrowSVG />
             {/* "Return to Categories Page" or "Back" inserted here by css based on screen size. */}
         </Link>

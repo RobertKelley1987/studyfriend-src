@@ -1,17 +1,18 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { findCategory } from '../../utils';
+import { useNavigate } from 'react-router-dom';
 import DeleteModal from '../../components/ui/DeleteModal';
 import DeleteCategoryButton from './DeleteCategoryButton';
 
 // Displays modal confirming category deletion
-const DeleteCategoryPage = ({ categories, setCategories }) => {
-    const { categoryId } = useParams();
-    const category = findCategory(categories, categoryId);
+const DeleteCategoryPage = ({ setErrorMessage, setCategories, category }) => {
     const navigate = useNavigate();
 
     return (
         <DeleteModal heading={`Delete ${category.name}?`}>
-            <DeleteCategoryButton setCategories={setCategories} dismissModal={() => navigate('/categories')} />
+            <DeleteCategoryButton
+                setErrorMessage={setErrorMessage} 
+                setCategories={setCategories} 
+                dismissModal={() => navigate('/categories')} 
+            />
         </DeleteModal>
     )
 }

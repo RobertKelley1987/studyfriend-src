@@ -29,6 +29,6 @@ export const updateFlashcard = async (userId, categoryId, flashcardId, updatedFl
 }
 
 export const deleteFlashcard = async (userId, categoryId, flashcardId) => {
-    const { data } = api.delete(`${flashcardURL(userId, categoryId)}/${flashcardId}`);
+    const { data } = await api.delete(`${flashcardURL(userId, categoryId)}/${flashcardId}`);
     return data;
 }

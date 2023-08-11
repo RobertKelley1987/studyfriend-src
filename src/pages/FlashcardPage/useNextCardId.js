@@ -8,7 +8,7 @@ const useNextCardId = flashcards => {
     const { flashcardId } = useParams(); // ID of flashcard currently shown to user
 
     useEffect(() => {
-        if(typeof(flashcards) === Array) {
+        if(flashcards) {
             const { notCompleted } = flashcards;
             // Find index of the desired flashcard
             const cardIndex = notCompleted.findIndex(flashcard => flashcard._id === flashcardId);

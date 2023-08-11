@@ -1,5 +1,4 @@
-import { useParams } from 'react-router-dom';
-import CompletedButton from '../../components/flashcard/CompletedButton';
+import StudyModeCompletedButton from './StudyModeCompletedButton';
 import ContinueButton from './ContinueButton';
 import FlipCardButton from '../../components/flashcard/FlipCardButton';
 import './ReviewFlashcardButtons.css';
@@ -15,8 +14,9 @@ const renderNextLink = (categoryId, cardId) => {
 
 // Buttons below flashcard content on flashcard show page / study mode
 const ReviewFlashcardButtons = props => {
-    const { categoryId } = useParams();
-    const { isFlipped, setIsFlipped, nextCardId, isStudying } = props;
+    const { flashcard, isFlipped, setIsFlipped, nextCardId, isStudying } = props;
+
+    console.log(nextCardId);
 
     // Button to show answer
     const flipButton = <FlipCardButton isFlipped={isFlipped} setIsFlipped={setIsFlipped} format="long" />;
@@ -24,8 +24,8 @@ const ReviewFlashcardButtons = props => {
     // Buttons to move to next flahcard, with or without marking card completed 
     const reviewButtons = (
         <div className="review-flashcard-buttons">
-            <CompletedButton {...props} className="button" redirectLink={renderNextLink(categoryId, nextCardId)} />
-            <ContinueButton {...props} className="button" nextLink={renderNextLink(categoryId, nextCardId)} />
+            <StudyModeCompletedButton {...props} redirectLink={renderNextLink(flashcard.category, nextCardId)} />
+            <ContinueButton {...props} className="button" nextLink={renderNextLink(flashcard.category, nextCardId)} />
         </div>
     );
 

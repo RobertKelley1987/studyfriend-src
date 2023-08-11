@@ -7,7 +7,7 @@ const CompletedButton = props => {
     // Add disabled class while status is being fetched from db
     const classNames = updatingStatus ? `${className} link-disabled` : className
 
-    return <button className={classNames} onClick={handleClick}>{renderText()}</button>;
+    return <button className={classNames} disabled={updatingStatus} onClick={handleClick}>{renderText()}</button>;
 
 }
 

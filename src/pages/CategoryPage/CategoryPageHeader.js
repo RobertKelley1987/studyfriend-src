@@ -7,10 +7,9 @@ import PlusSVG from '../../components/SVGs/PlusSVG';
 import './CategoryPageHeader.css';
 
 // Options displayed at top of category page
-const CategoryPageHeader = props => {
-    const { setFlashcards, completed } = props;
-    const { categoryId = '' } = useParams();
-    
+const CategoryPageHeader = props => {  
+    const { categoryId } = props;
+
     return (
         <div className="category-page-header">
             <div className="category-page-header-buttons">
@@ -18,11 +17,11 @@ const CategoryPageHeader = props => {
                     <PlusSVG /> 
                     New Flashcard
                 </Link>
-                <StudyButton {...props} categoryId={categoryId} className="button" />
-                <ResetButton className="button" completed={completed} setFlashcards={setFlashcards} />
+                <StudyButton {...props} className="button" />
+                <ResetButton {...props} />
             </div>
             <Dropdown svgClassName={"dropdown-svg-big"}>            
-                <CategoryOptions categoryId={categoryId} className="link" />
+                <CategoryOptions categoryId={categoryId} />
             </Dropdown>
         </div>
     );

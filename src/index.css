@@ -129,11 +129,3 @@ svg {
   flex-direction: column;
   justify-content: center;
 }
-
-.bold {
-  font-weight: bold;
-}
-
-.loading {
-  transform: translateY(-50px);
-}

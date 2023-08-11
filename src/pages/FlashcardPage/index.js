@@ -16,25 +16,27 @@ const FlashcardPage = props => {
     const { userId, isStudying } = props;
     const { categoryId } = useParams();
     const { flashcard, setFlashcard } = useFlashcard(userId);
-    const { flashcards } = useFlashcards(userId, categoryId);
+    const { flashcards, setFlashcards } = useFlashcards(userId, categoryId);
     const { nextCardId } = useNextCardId(flashcards);
     const [isFlipped, setIsFlipped] = useIsFlipped();
     const [updatingStatus, setUpdatingStatus] = useState(false);
 
     return (
-        <Loading 
-            isLoading={!flashcard.question} 
-            loadingEl={<div className="page center-content">Loading...</div>}
-        >
-            <div className="page flashcard-page">
-                <FlashcardPageHeader 
-                    {...props} 
-                    flashcard={flashcard}
-                    setFlashcard={setFlashcard} 
-                    numRemaining={flashcards.notCompleted.length} 
-                    updatingStatus={updatingStatus}
-                    setUpdatingStatus={setUpdatingStatus}
-                />
+
+        <div className="page flashcard-page">
+            <FlashcardPageHeader 
+                {...props} 
+                flashcard={flashcard}
+                setFlashcard={setFlashcard} 
+                numRemaining={flashcards.notCompleted.length} 
+                updatingStatus={updatingStatus}
+                setUpdatingStatus={setUpdatingStatus}
+            />
+
+            <Loading 
+                isLoading={!flashcard.question} 
+                loadingEl={<div className="page center-content">Loading...</div>}
+            >
                 <div className="center-content">
                     <div className="flashcard-wrapper">
                         <FlashcardContent 
@@ -48,12 +50,16 @@ const FlashcardPage = props => {
                             isFlipped={isFlipped}
                             setIsFlipped={setIsFlipped}
                             nextCardId={nextCardId}
+                            updatingStatus={updatingStatus}
+                            setUpdatingStatus={setUpdatingStatus}
+                            setFlashcards={setFlashcards}
                         />
                     </div>
                 </div>
-                {!isStudying && <FlashcardStatus updatingStatus={updatingStatus} flashcard={flashcard} />}
-            </div>
-        </Loading>
+            </Loading>
+            
+            {!isStudying && <FlashcardStatus updatingStatus={updatingStatus} flashcard={flashcard} />}
+        </div>
     );
 }
 

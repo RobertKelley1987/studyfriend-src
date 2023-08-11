@@ -4,18 +4,21 @@ import { UserIdContext } from '../../context/UserIdContext';
 import { deleteCategory } from '../../services/categories';
 
 // Button to delete a category from database
-const DeleteCategoryButton = ({ setCategories, dismissModal, setErrorMessage }) => {
+const DeleteCategoryButton = ({ setCategories, dismissModal, setIsUpdating, setErrorMessage }) => {
     const userId = useContext(UserIdContext);
     const { categoryId } = useParams();
 
     const handleClick = async () => {
+        setIsUpdating(true);
+
         const { categories, errorMessage } = await deleteCategory(userId, categoryId);
-        console.log("ERROR: " + errorMessage);
         if(errorMessage) {
             setErrorMessage(errorMessage);
         } else {
             setCategories(categories);
         }
+
+        setIsUpdating(false);
         dismissModal();
     }
 

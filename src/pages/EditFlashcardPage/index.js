@@ -31,14 +31,15 @@ const EditFlashcardPage = props => {
     }
 
     return (
-        <Loading isLoading={!flashcard.question} loadingEl={<div className="page center-content">Loading...</div>}>
-            <div className="page">
-                <ReturnLink 
-                    setIsStudying={setIsStudying} 
-                    className="return-link-category" 
-                    link={`/categories/${categoryId}`}
-                />
-                <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
+        <div className="page">
+            <ReturnLink 
+                setIsStudying={setIsStudying} 
+                className="return-link-category" 
+                link={`/categories/${categoryId}`}
+            />
+            <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
+            
+            <Loading isLoading={!flashcard.question} loadingEl={<div className="page center-content">Loading...</div>}>
                 <div className="center-content">
                     <FlashcardForm 
                         {...props}
@@ -48,8 +49,8 @@ const EditFlashcardPage = props => {
                         submitting={submitting}
                     />
                 </div>
-            </div>
-        </Loading>
+            </Loading>
+        </div>
     );
 }
 

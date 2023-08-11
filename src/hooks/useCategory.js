@@ -8,26 +8,21 @@ const useCategory = (userId, categoryId) => {
 
     useEffect(() => {
         setLoadingCategory(true);
+        setName('');
         
         const findCategory = async () => {
             const { data: { category } } = await getCategory(userId, categoryId);
             const { name } = category;
             setName(name);
-            console.log('here');
             setLoadingCategory(false);
         }
-
-        console.log(categoryId);
-        console.log(userId);
 
         if(categoryId && userId) {
             findCategory();
         }
     }, [categoryId, userId]);
 
-    console.log(loadingCategory);
-
-    return { name, loadingCategory };
+    return { name, setName, loadingCategory };
 }
 
 export default useCategory;

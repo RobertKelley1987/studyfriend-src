@@ -21,7 +21,8 @@ export const updateFlashcardCompleted = async (userId, categoryId, flashcardId) 
 }
 
 export const resetAllFlashcards = async (userId, categoryId) => {
-    return await api.put(flashcardURL(userId, categoryId));
+    const { data } = await api.put(flashcardURL(userId, categoryId));
+    return data;
 }
 
 export const updateFlashcard = async (userId, categoryId, flashcardId, updatedFlashcard) => {

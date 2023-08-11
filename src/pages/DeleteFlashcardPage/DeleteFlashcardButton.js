@@ -4,17 +4,21 @@ import { deleteFlashcard } from '../../services/flashcards';
 import { UserIdContext } from '../../context/UserIdContext';
 
 // Button to delete a flashcard from database
-const DeleteFlashcardButton = ({ setErrorMessage, setFlashcards, dismissModal }) => {
+const DeleteFlashcardButton = ({ setErrorMessage, setFlashcards, setIsUpdating, dismissModal }) => {
     const userId = useContext(UserIdContext);
     const { flashcardId, categoryId } = useParams();
 
     const handleClick = async () => {
+        setIsUpdating(true);
+
         const { flashcards, errorMessage } = await deleteFlashcard(userId, categoryId, flashcardId);
         if(errorMessage) {
             setErrorMessage(errorMessage);
         } else {
             setFlashcards(flashcards);
         }
+
+        setIsUpdating(false);
         dismissModal();
     }
 

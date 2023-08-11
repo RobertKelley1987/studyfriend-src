@@ -103,7 +103,8 @@ function App() {
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
                   <CategoryPage 
-                    name={name} 
+                    name={name}
+                    categoryId={categoryId} 
                     setCategoryId={setCategoryId}
                     flashcards={flashcards}
                     setFlashcards={setFlashcards}
@@ -135,7 +136,7 @@ function App() {
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
-                  <CompletedPage setIsStudying={setIsStudying} />
+                  <CompletedPage categoryId={categoryId} setIsStudying={setIsStudying} />
                 </ProtectedRoute>
               </Loading>
             } 
@@ -216,6 +217,8 @@ function App() {
                     <DeleteCategoryPage 
                       setErrorMessage={setErrorMessage} 
                       setCategories={setCategories} 
+                      setCategoryId={setCategoryId}
+                      name={name}
                     />
                   </ProtectedRoute>
                 </Loading>

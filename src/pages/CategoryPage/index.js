@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import useCategoryId from '../../hooks/useCategoryId';
 import Flashcards from './Flashcards';
 import CategoryPageHeader from './CategoryPageHeader';
 import Loading from '../../components/ui/Loading';
@@ -10,24 +10,23 @@ import './CategoryPage.css';
 const CategoryPage = props => {
     const { setCategoryId, flashcards, setFlashcards, name, loadingFlashcards, loadingCategory } = props;
     const [errorMessage, setErrorMessage] = useState('');
-    const { categoryId } = useParams();
-
-    // If category id in url changes, update in app state
-    useEffect(() => {
-        setCategoryId(categoryId);
-    }, [categoryId, setCategoryId])
+    const [updatingStatus, setUpdatingStatus] = useState(false);
+    useCategoryId(setCategoryId);
 
     return (
         <Loading 
             isLoading={loadingCategory || loadingFlashcards} 
-            loadingEl={<div className="loading center-content">Loading...</div>}
+            loadingEl={<div className="center-content">Loading...</div>}
         >
             <div className="page category-page">
                 <CategoryPageHeader 
                     {...props}
                     setFlashcards={setFlashcards}
-                    firstCard={flashcards.notCompleted[0] || {}}
+                    firstCard={flashcards.notCompleted[0] || null}
                     completed={flashcards.completed}
+                    setErrorMessage={setErrorMessage}
+                    updatingStatus={updatingStatus}
+                    setUpdatingStatus={setUpdatingStatus}
                 />
                 <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>
 

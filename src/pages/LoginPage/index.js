@@ -6,9 +6,9 @@ import './LoginPage.css';
 
 // User login page
 const LoginPage = ({ setUserId, setErrorMessage }) => {
-    // Clear prev error messages on initial render
+    // Clear prev error messages before unmount
     useEffect(() => {
-        setErrorMessage('');
+        return () => setErrorMessage('');
     }, [setErrorMessage]);
 
     return (

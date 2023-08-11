@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import useCategories from './hooks/useCategories';
 import useUserId from './hooks/useUserId';
-import useCategory from './hooks/useCategory'
 import useFlashcards from './hooks/useFlashcards'
 import CategoriesPage from './pages/CategoriesPage';
 import NewCategoryPage from './pages/NewCategoryPage';

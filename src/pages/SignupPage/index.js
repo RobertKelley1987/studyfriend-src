@@ -4,9 +4,9 @@ import AuthForm from "../../components/forms/AuthForm";
 
 // User signup page
 const SignupPage = ({ setUserId, setErrorMessage }) => {
-    // Clear prev error messages on initial render
+    // Clear prev error messages before unmount
     useEffect(() => {
-        setErrorMessage('');
+        return () => setErrorMessage('');
     }, [setErrorMessage]);
 
     return (

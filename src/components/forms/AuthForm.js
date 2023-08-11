@@ -49,7 +49,7 @@ const AuthForm = ({ title, authFn, setErrorMessage, setUserId, includeHints }) =
                 <input 
                     onChange={e => setPassword(e.target.value)} 
                     value={password} 
-                    type="text"
+                    type="password"
                     placeholder="Password"
                     className="form-input"
                 />

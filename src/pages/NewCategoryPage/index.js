@@ -32,7 +32,7 @@ const NewCategoryPage = props => {
     return (
         <div className="page">
             <ErrorMessage message={errorMessage} />
-            <ReturnLink setIsStudying={setIsStudying} text="Return to categories page" link={`/categories`} />
+            <ReturnLink setIsStudying={setIsStudying} className="return-link-categories" link={`/categories`} />
             <div className="center-content">
                 <CategoryForm 
                     handleSubmit={handleSubmit} 

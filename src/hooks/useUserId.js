@@ -16,7 +16,7 @@ const useUserId = () => {
         findSession();
     }, []);
 
-    return [userId, setUserId, loadingUserId];
+    return { userId, setUserId, loadingUserId };
 }
 
 export default useUserId;

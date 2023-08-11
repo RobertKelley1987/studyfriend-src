@@ -1,10 +1,10 @@
 import './CardsRemaining.css';
 
 // Display cards remaining in study mode
-const CardsRemaining = ({ category }) => {
+const CardsRemaining = ({ numCards }) => {
     return (
         <p className="cards-remaining">
-            {category.flashcards.notCompleted.length} 
+            {numCards} 
             <span className="cards-remaining-text">
                 {/* " flashcards remaining" or " remaining" inserted by css based on screen size*/}
             </span>

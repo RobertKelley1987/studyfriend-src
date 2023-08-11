@@ -9,11 +9,11 @@ const DeleteFlashcardButton = ({ setErrorMessage, setFlashcards, dismissModal })
     const { flashcardId, categoryId } = useParams();
 
     const handleClick = async () => {
-        const { category, errorMessage } = await deleteFlashcard(userId, categoryId, flashcardId);
+        const { flashcards, errorMessage } = await deleteFlashcard(userId, categoryId, flashcardId);
         if(errorMessage) {
             setErrorMessage(errorMessage);
         } else {
-            setFlashcards(category.flashcards);
+            setFlashcards(flashcards);
         }
         dismissModal();
     }

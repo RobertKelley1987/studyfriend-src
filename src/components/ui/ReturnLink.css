@@ -1,9 +1,19 @@
-.return-link::after {
+.return-link-categories::after {
     content: "Back";
 }
 
 @media(min-width: 500px) {
-    .return-link::after {
-        content: attr(data-text);
+    .return-link-categories::after {
+        content: "Return to categories page";
+    }
+}
+
+.return-link-category::after {
+    content: "Back";
+}
+
+@media(min-width: 500px) {
+    .return-link-category::after {
+        content: "Return to category page";
     }
 }

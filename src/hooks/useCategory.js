@@ -4,35 +4,30 @@ import { getCategory } from '../services/categories';
 // Hook to find a category and provide its related flashcards
 const useCategory = (userId, categoryId) => {
     const [name, setName] = useState('');
-    const [completed, setCompleted] = useState([]);
-    const [notCompleted, setNotCompleted] = useState([]);
-    const [loadingCategory, setLoadingCategory] = useState(false);
-
-    const flashcards = { completed, notCompleted };
-    const setFlashcards = (({ completed, notCompleted }) => {
-        setCompleted(completed);
-        setNotCompleted(notCompleted);
-    });
-
-    const category = { _id: categoryId, name, flashcards }
+    const [loadingCategory, setLoadingCategory] = useState(true);
 
     useEffect(() => {
         setLoadingCategory(true);
+        
         const findCategory = async () => {
             const { data: { category } } = await getCategory(userId, categoryId);
-            const { name, flashcards } = category;
+            const { name } = category;
             setName(name);
-            setCompleted(flashcards.completed);
-            setNotCompleted(flashcards.notCompleted);
+            console.log('here');
+            setLoadingCategory(false);
         }
+
+        console.log(categoryId);
+        console.log(userId);
 
         if(categoryId && userId) {
             findCategory();
-            setLoadingCategory(false);
         }
     }, [categoryId, userId]);
 
-    return { category, loadingCategory, setFlashcards };
+    console.log(loadingCategory);
+
+    return { name, loadingCategory };
 }
 
 export default useCategory;

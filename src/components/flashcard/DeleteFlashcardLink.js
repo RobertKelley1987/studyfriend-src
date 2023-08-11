@@ -9,9 +9,10 @@ NOTE: Cannot access flashcardId with useParams here.
 MUST USE A FLASHCARD PROP PASSED FROM PARENT.
 ******************************************************/
 
-const DeleteFlashcardLink = ({ categoryId, flashcardId }) => {
-    const flashcardURL = `/categories/${categoryId}/flashcards/${flashcardId}`;
-    const navigate = useNavigate(), location = useLocation();
+const DeleteFlashcardLink = ({ flashcard }) => {
+    const flashcardURL = `/categories/${flashcard.category}/flashcards/${flashcard._id}`;
+    const navigate = useNavigate(); 
+    const location = useLocation();
     
     const handleClick = e => {
         e.preventDefault(); // If inside a link, do not trigger it

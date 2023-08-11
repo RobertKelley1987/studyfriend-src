@@ -9,8 +9,8 @@ NOTE: Cannot access flashcardId with useParams here.
 MUST USE A FLASHCARD PROP PASSED FROM PARENT.
 ******************************************************/
 
-const EditFlashcardLink = ({ categoryId, flashcardId }) => {
-    const flashcardURL = `/categories/${categoryId}/flashcards/${flashcardId}`;
+const EditFlashcardLink = ({ flashcard }) => {
+    const flashcardURL = `/categories/${flashcard.category}/flashcards/${flashcard._id}`;
     const navigate = useNavigate();
     
     const handleClick = e => {

@@ -1,8 +1,7 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateFlashcard } from '../../services/flashcards';
 import useFlashcard from '../../hooks/useFlashcard';
-import { UserIdContext } from '../../context/UserIdContext';
 import FlashcardForm from '../../components/forms/FlashcardForm';
 import ErrorMessage from '../../components/ui/ErrorMessage';
 import Loading from '../../components/ui/Loading';
@@ -10,24 +9,23 @@ import ReturnLink from '../../components/ui/ReturnLink';
 
 // Displays form to edit flashcard
 const EditFlashcardPage = props => {
-    const userId = useContext(UserIdContext);
-    const { setFlashcards, setIsStudying } = props;
-    const { categoryId } = useParams();
-    const flashcard = useFlashcard(userId);
+    const { userId, setIsStudying, setFlashcards } = props;
     const [submitting, setSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const { flashcard } = useFlashcard(userId);
+    const { categoryId } = useParams();
     const navigate = useNavigate();
 
-    const handleSubmit = async (e, updatedFlashcard) => {
+    const handleSubmit = async (e, formFlashcard) => {
         e.preventDefault();
         setSubmitting(true);
 
-        const { category, errorMessage } = await updateFlashcard(userId, categoryId, flashcard._id, updatedFlashcard);        
+        const { flashcards, errorMessage } = await updateFlashcard(userId, categoryId, flashcard._id, formFlashcard);        
         if(errorMessage) {
             setErrorMessage(errorMessage);
             setSubmitting(false);
         } else {
-            setFlashcards(category.flashcards);
+            setFlashcards(flashcards);
             navigate(-1);
         }
     }
@@ -37,7 +35,7 @@ const EditFlashcardPage = props => {
             <div className="page">
                 <ReturnLink 
                     setIsStudying={setIsStudying} 
-                    text="Return to category page" 
+                    className="return-link-category" 
                     link={`/categories/${categoryId}`}
                 />
                 <ErrorMessage message={errorMessage} setErrorMessage={setErrorMessage}/>

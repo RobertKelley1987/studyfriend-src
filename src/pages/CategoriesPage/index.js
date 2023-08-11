@@ -4,7 +4,7 @@ import PlusSVG from '../../components/SVGs/PlusSVG';
 import Loading from '../../components/ui/Loading';
 import './CategoriesPage.css';
 
-const CategoriesPage = ({ categories, categoriesLoading, setCategoryId }) => {
+const CategoriesPage = ({ categories, categoriesLoading }) => {
     return (
         <div className="page">
             <div className="page-options">
@@ -16,7 +16,7 @@ const CategoriesPage = ({ categories, categoriesLoading, setCategoryId }) => {
 
             <h1 className="categories-page-heading">Categories</h1>
             <Loading isLoading={categoriesLoading} loadingEl="Loading...">
-                <Categories categories={categories} setCategoryId={setCategoryId} />
+                <Categories categories={categories} />
             </Loading>
         </div>
     );

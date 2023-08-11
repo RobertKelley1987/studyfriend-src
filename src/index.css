@@ -108,6 +108,13 @@ svg {
   text-decoration: underline;
 }
 
+.link-disabled {
+  color: var(--black);
+  cursor: default;
+  opacity: 70%;
+  pointer-events: none;
+}
+
 .page {
   display: flex;
   flex: 1 0 100%;

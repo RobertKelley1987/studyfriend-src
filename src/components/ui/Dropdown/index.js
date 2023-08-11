@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import useToggleDropdown from './useToggleDropdown';
 import usePositionDropdown from './usePositionDropdown';
 import MoreSVG from '../../SVGs/MoreSVG';
@@ -9,17 +9,11 @@ import './Dropdown.css';
    and the other references the wrapper for the svg and dropdown used for the "click 
    outside to close" feature */
 
-const Dropdown = ({ categories, children, svgClassName }) => {
+const Dropdown = ({ children, svgClassName }) => {
     const options = useRef(null);
     const optionsWrapper = useRef(null);
     const [dropdownVisible, setDropdownVisible] = useToggleDropdown(optionsWrapper);
     const { style } = usePositionDropdown(options, dropdownVisible);
-
-    // When categories updates, make dropdown not visible. Specifically, if this isn't here,
-    // if feels very awkward after clicking the "change status" link on the flashcard page.
-    useEffect(() => {
-        setDropdownVisible(false);
-    }, [categories, setDropdownVisible])
 
     const handleClick = e => {
         e.preventDefault(); // Prevent user from going to show page

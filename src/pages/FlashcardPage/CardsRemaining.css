@@ -1,9 +1,3 @@
 .cards-remaining-text::after {
     content: " remaining";
 }
-
-@media(min-width: 500px) {
-    .cards-remaining-text::after {
-        content: " flashcards remaining";
-    }
-}

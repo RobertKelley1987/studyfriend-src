@@ -4,9 +4,9 @@ import CategoryOptions from '../../components/category/CategoryOptions';
 import './Category.css';
 
 // Category card displayed inside grid of categories on categories page
-const Category = ({ category, setCategoryId }) => {
+const Category = ({ category }) => {
     return (
-        <Link className="category" to={`/categories/${category._id}`} onClick={() => setCategoryId(category._id)}>
+        <Link className="category" to={`/categories/${category._id}`}>
             <div className="category-wrapper">
                 <h2 className="category-name">{category.name}</h2>
                 {/* <div className="category-data">

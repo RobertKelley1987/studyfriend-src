@@ -9,10 +9,10 @@ import './Flashcard.css';
 // Flashcard element displayed in grid on category page
 const Flashcard = props => {
     const [isFlipped, setIsFlipped] = useState(false);
-    const { flashcard, categoryId } = props;
+    const { flashcard } = props;
 
     return (
-        <Link to={`/categories/${categoryId}/flashcards/${flashcard._id}`} className="flashcard">
+        <Link to={`/categories/${flashcard.category}/flashcards/${flashcard._id}`} className="flashcard">
             <FlashcardContent 
                 isFlipped={isFlipped} 
                 flashcard={flashcard} 

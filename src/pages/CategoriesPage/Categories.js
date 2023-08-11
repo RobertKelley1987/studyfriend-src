@@ -2,7 +2,7 @@ import Grid from '../../components/layout/Grid';
 import Category from './Category';
 
 // Grid of categories displayed on categories page
-const Categories = ({ categories, setCategoryId }) => {
+const Categories = ({ categories }) => {
     const emptyMessage = (
         <p className="categories-empty-message">
             You don't have any categories! Create a new category to start making flashcards.
@@ -11,7 +11,7 @@ const Categories = ({ categories, setCategoryId }) => {
 
     const categoriesGrid = (
         <Grid>
-            {categories.map(category => <Category key={category._id} category={category} setCategoryId={setCategoryId} />)}
+            {categories.map(category => <Category key={category._id} category={category} />)}
         </Grid>
     );
 

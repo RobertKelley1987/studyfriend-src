@@ -6,12 +6,13 @@ const useFlashcardFormData = (flashcardToEdit) => {
     const [answer, setAnswer] = useState(''); 
 
     useEffect(() => {
+        // INITIAL RENDER ONLY
         // If a flashcard is provided for editing, init values for flashcard edit form
         if(flashcardToEdit) {
             setQuestion(flashcardToEdit.question);
             setAnswer(flashcardToEdit.answer);
         }
-    }, [flashcardToEdit]);
+    }, []);
 
     // Return combined state with and set methods
     return [question, answer, setQuestion, setAnswer];

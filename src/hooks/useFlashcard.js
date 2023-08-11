@@ -2,29 +2,31 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFlashcard } from '../services/flashcards';
 
+const DEFAULT_FLASHCARD = { _id: '', question: '', answer: '', completed: false, category: '' }
+
 const useFlashcard = userId => {
+    const [_id, setId] = useState('');
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
     const [completed, setCompleted] = useState(false);
+    const [category, setCategory] = useState('');
     const { categoryId, flashcardId } = useParams();
 
-    const flashcard = { _id: flashcardId, question, answer, completed };
-
-    const setFlashcard = (question, answer, completed) => {
+    const setFlashcard = flashcard => {
+        const { _id, question, answer, completed, category } = flashcard;
+        setId(_id);
         setQuestion(question);
         setAnswer(answer);
-        if(typeof(completed) === 'boolean') {
-            setCompleted(completed);
-        }
+        setCompleted(completed);
+        setCategory(category);
     }
 
     useEffect(() => {
-        setFlashcard('', ''); // Clear prev values
+        setFlashcard(DEFAULT_FLASHCARD); // Clear prev values
 
         const findFlashcard = async () => {
             const { data: { flashcard } } = await getFlashcard(userId, categoryId, flashcardId);
-            const { question, answer, completed } = flashcard;
-            setFlashcard(question, answer, completed);
+            setFlashcard(flashcard);
         }
 
         if(userId && categoryId && flashcardId) {
@@ -32,7 +34,7 @@ const useFlashcard = userId => {
         }
     }, [flashcardId, categoryId, userId]);
 
-    return flashcard;
+    return { flashcard: { _id, question, answer, completed, category }, setFlashcard };
 }
 
 export default useFlashcard;

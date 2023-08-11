@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 
 // Finds the id of the next flashcard in a category based on card
 // the card currently displayed
-const useNextCardId = category => {
+const useNextCardId = flashcards => {
     const [nextCardId, setNextCardId] = useState('');
     const { flashcardId } = useParams(); // ID of flashcard currently shown to user
 
     useEffect(() => {
-        if(category) {
-            const { notCompleted } = category.flashcards;
+        if(typeof(flashcards) === Array) {
+            const { notCompleted } = flashcards;
             // Find index of the desired flashcard
             const cardIndex = notCompleted.findIndex(flashcard => flashcard._id === flashcardId);
             // If there is a card after the desired flashcard, return it, otherwise return 1st card in array. 
@@ -18,7 +18,7 @@ const useNextCardId = category => {
             !notCompleted[1] ? setNextCardId('') : setNextCardId(nextCard._id)
         }
         
-    }, [category, flashcardId]);
+    }, [flashcards, flashcardId]);
 
     return { nextCardId }
 }

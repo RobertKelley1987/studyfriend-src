@@ -20,7 +20,7 @@ const useCategories = userId => {
         }
     }, [userId]);
 
-    return [categories, setCategories, categoriesLoading];
+    return { categories, setCategories, categoriesLoading };
 }
 
 export default useCategories;

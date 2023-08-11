@@ -22,3 +22,6 @@ export const findFlashcard = (category = { flashcards: [] }, flashcardId) => {
 export const findCategory = (categories, categoryId) => {
     return categories.find(category => category._id === categoryId);
 }
+
+// Empty flashcard used to reset all values
+export const DEFAULT_FLASHCARD = { _id: '', question: '', answer: '', completed: false, category: '' }

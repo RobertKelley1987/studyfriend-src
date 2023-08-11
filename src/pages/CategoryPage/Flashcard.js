@@ -5,6 +5,7 @@ import FlashcardContent from '../../components/flashcard/FlashcardContent';
 import FlipCardButton from '../../components/flashcard/FlipCardButton';
 import Dropdown from '../../components/ui/Dropdown';
 import './Flashcard.css';
+import CategoryPageCompletedButton from './CategoryPageCompletedButton';
 
 // Flashcard element displayed in grid on category page
 const Flashcard = props => {
@@ -21,7 +22,11 @@ const Flashcard = props => {
             <div className="flashcard-buttons">
                 <FlipCardButton isFlipped={isFlipped} setIsFlipped={setIsFlipped} format="short" />
                 <Dropdown {...props} >
-                    <FlashcardOptions {...props} className="link" />
+                    <FlashcardOptions 
+                        {...props} 
+                        className="link"
+                        completedButton={<CategoryPageCompletedButton {...props} />} 
+                    />
                 </Dropdown>
             </div>
         </Link>

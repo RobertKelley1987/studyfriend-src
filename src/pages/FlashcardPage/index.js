@@ -34,7 +34,7 @@ const FlashcardPage = props => {
             />
 
             <Loading 
-                isLoading={!flashcard.question} 
+                isLoading={(updatingStatus && isStudying)|| !flashcard._id} 
                 loadingEl={<div className="page center-content">Loading...</div>}
             >
                 <div className="center-content">
@@ -53,12 +53,13 @@ const FlashcardPage = props => {
                             updatingStatus={updatingStatus}
                             setUpdatingStatus={setUpdatingStatus}
                             setFlashcards={setFlashcards}
+                            setFlashcard={setFlashcard} 
                         />
                     </div>
                 </div>
+
+                {!isStudying && <FlashcardStatus updatingStatus={updatingStatus} flashcard={flashcard} />}
             </Loading>
-            
-            {!isStudying && <FlashcardStatus updatingStatus={updatingStatus} flashcard={flashcard} />}
         </div>
     );
 }

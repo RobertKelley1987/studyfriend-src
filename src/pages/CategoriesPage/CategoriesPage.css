@@ -1,5 +1,5 @@
 .categories-page-heading {
-    font-size: 3rem;
+    font-size: var(--huge-font);
     margin: 4rem 0 2rem 0;
 }
 

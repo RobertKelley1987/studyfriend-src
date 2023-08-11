@@ -7,13 +7,14 @@
   --sans-serif: 'Roboto', sans-serif;
   --x-small-font: 1rem;
   --small-font: 1.15rem;
-  --medium-font: 1.75rem;
+  --medium-font: 1.5rem;
   --huge-font: 2.5rem;
 }
 
 @media (min-width: 500px) {
   :root {
     --huge-font: 3rem;
+    --medium-font: 1.75rem;
   }
 }
 
@@ -110,9 +111,12 @@ svg {
 
 .link-disabled {
   color: var(--black);
-  cursor: default;
   opacity: 70%;
   pointer-events: none;
+}
+
+.link-disabled:hover {
+  cursor: default;
 }
 
 .page {

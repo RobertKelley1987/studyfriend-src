@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
 import { signUpUser } from "../../services/users";
 import AuthForm from "../../components/forms/AuthForm";
 
 // User signup page
 const SignupPage = ({ setUserId, setErrorMessage }) => {
+    // Clear prev error messages on initial render
+    useEffect(() => {
+        setErrorMessage('');
+    }, [setErrorMessage]);
+
     return (
         <div className="page">
             <div className="center-content">

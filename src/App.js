@@ -29,7 +29,6 @@ function App() {
   const [categoryId, setCategoryId] = useState('');
   const { userId, setUserId, loadingUserId } = useUserId();
   const { categories, setCategories, categoriesLoading } = useCategories(userId);
-  const { name, loadingCategory } = useCategory(userId, categoryId);
   const { flashcards, setFlashcards, loadingFlashcards } = useFlashcards(userId, categoryId);
   const gettingSessionData = loadingUserId || userId === undefined;
 
@@ -82,6 +81,7 @@ function App() {
                   <CategoriesPage 
                     categories={categories} 
                     categoriesLoading={categoriesLoading} 
+                    setCategoryId={setCategoryId}
                   />
                 </ProtectedRoute>
               </Loading>
@@ -103,13 +103,12 @@ function App() {
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                 <ProtectedRoute userId={userId}>
                   <CategoryPage 
-                    name={name}
+                    userId={userId}
                     categoryId={categoryId} 
                     setCategoryId={setCategoryId}
                     flashcards={flashcards}
                     setFlashcards={setFlashcards}
                     setIsStudying={setIsStudying}
-                    loadingCategory={loadingCategory}
                     loadingFlashcards={loadingFlashcards}
                   />
                 </ProtectedRoute>
@@ -214,11 +213,10 @@ function App() {
               element={
                 <Loading isLoading={gettingSessionData} loadingEl="Loading...">
                   <ProtectedRoute userId={userId}>
-                    <DeleteCategoryPage 
+                    <DeleteCategoryPage
+                      userId={userId}
                       setErrorMessage={setErrorMessage} 
-                      setCategories={setCategories} 
-                      setCategoryId={setCategoryId}
-                      name={name}
+                      setCategories={setCategories}
                     />
                   </ProtectedRoute>
                 </Loading>

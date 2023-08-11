@@ -9,11 +9,6 @@ const Category = ({ category }) => {
         <Link className="category" to={`/categories/${category._id}`}>
             <div className="category-wrapper">
                 <h2 className="category-name">{category.name}</h2>
-                {/* <div className="category-data">
-                    <span>Total Cards: {completed.length + notCompleted.length}</span>
-                    <span>Cards To Review: {completed.length}</span>
-                    <span>Completed Cards: {notCompleted.length}</span>
-                </div> */}
             </div>
             <div className="category-buttons">
                 <Dropdown>

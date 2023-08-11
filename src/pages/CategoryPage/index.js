@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useCategory from '../../hooks/useCategory';
 import useCategoryId from '../../hooks/useCategoryId';
 import Flashcards from './Flashcards';
 import CategoryPageHeader from './CategoryPageHeader';
@@ -8,9 +9,10 @@ import './CategoryPage.css';
 
 // Category page displaying name and all flashcards for that category
 const CategoryPage = props => {
-    const { setCategoryId, flashcards, setFlashcards, name, loadingFlashcards, loadingCategory } = props;
+    const { userId, categoryId, setCategoryId, flashcards, setFlashcards, loadingFlashcards } = props;
     const [errorMessage, setErrorMessage] = useState('');
     const [updatingStatus, setUpdatingStatus] = useState(false);
+    const { name, loadingCategory } = useCategory(userId, categoryId);
     useCategoryId(setCategoryId);
 
     return (

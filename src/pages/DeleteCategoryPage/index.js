@@ -1,25 +1,31 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useCategoryId from '../../hooks/useCategoryId';
+import { useNavigate, useParams } from 'react-router-dom';
+import useCategory from '../../hooks/useCategory';
 import DeleteModal from '../../components/ui/DeleteModal';
 import DeleteCategoryButton from './DeleteCategoryButton';
 
 // Displays modal confirming category deletion
-const DeleteCategoryPage = ({ setErrorMessage, setCategories, setCategoryId, name }) => {
+const DeleteCategoryPage = ({ userId, setErrorMessage, setCategories }) => {
+    const { categoryId } = useParams();
+    const { name, setName, loadingCategory } = useCategory(userId, categoryId);
     const [isUpdating, setIsUpdating] = useState(false);
-    useCategoryId(setCategoryId);
     const navigate = useNavigate();
+    
+    const handleDismiss = () => {
+        setName('');
+        navigate('/categories');
+    }
 
     return (
         <DeleteModal 
             name={name}
-            isLoading={!name}
+            isLoading={loadingCategory}
             isUpdating={isUpdating}
             deleteButton={
                 <DeleteCategoryButton
                     setErrorMessage={setErrorMessage} 
                     setCategories={setCategories} 
-                    dismissModal={() => navigate('/categories')} 
+                    dismissModal={handleDismiss} 
                     setIsUpdating={setIsUpdating}
                 />
             }

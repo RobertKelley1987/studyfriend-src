@@ -11,7 +11,9 @@ const Categories = ({ categories }) => {
 
     const categoriesGrid = (
         <Grid>
-            {categories.map(category => <Category key={category._id} category={category} />)}
+            {categories.map(category => {
+            return <Category key={category._id} category={category} />
+            })}
         </Grid>
     );
 

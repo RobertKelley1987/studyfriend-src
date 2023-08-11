@@ -61,7 +61,7 @@ function App() {
             path="/signup" 
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
-                <SignupPage setUserId={setUserId}/>
+                <SignupPage setUserId={setUserId} setErrorMessage={setErrorMessage} />
               </Loading>
             } 
           />
@@ -69,7 +69,7 @@ function App() {
             path="/login"
             element={
               <Loading isLoading={gettingSessionData} loadingEl="Loading...">
-                <LoginPage setUserId={setUserId}/>
+                <LoginPage setUserId={setUserId} setErrorMessage={setErrorMessage} />
               </Loading>
             } 
           />
